@@ -5,12 +5,19 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        if len(s) != len(t):
+         if len(s) != len(t):
             return False
 
-        countS, countT = {}, {}
+        char_frequency = {}
 
-        for i in range(len(s)):
-            countS[s[i]] = 1 + countS.get(s[i], 0)
-            countT[t[i]] = 1 + countT.get(t[i], 0)
-        return countS == countT
+        #True Build character frequency map for string s
+        for char in s:
+            char_frequency[char] = char_frequency.get(char, 0) + 1
+
+        # Compare with string t
+        for char in t:
+            if char not in char_frequency or char_frequency[char] == 0:
+                return False
+            char_frequency[char] -= 1
+
+        return 
