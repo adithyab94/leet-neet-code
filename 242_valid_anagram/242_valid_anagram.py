@@ -10,7 +10,7 @@ class Solution(object):
 
         char_frequency = {}
 
-        #True Build character frequency map for string s
+        # Build character frequency map for string s
         for char in s:
             char_frequency[char] = char_frequency.get(char, 0) + 1
 
@@ -20,4 +20,4 @@ class Solution(object):
                 return False
             char_frequency[char] -= 1
 
-        return 
+        return True
