@@ -1,9 +1,5 @@
-````markdown
 # Anagram Checking Techniques
 
-This document covers three common approaches to determine if two strings `s` and `t` are anagrams of each other.
-
----
 
 ## 1. Sorting
 
@@ -112,5 +108,4 @@ Feel free to choose the method that best fits your constraints:
 * Use **sorting** for simplicity when performance is not critical.
 * Use a **hash map** or **fixed array** for O(n) performance with trade-offs in readability and character set flexibility.
 
-```
-```
+
