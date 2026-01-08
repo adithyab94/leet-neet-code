@@ -103,15 +103,6 @@ Where:
 
 ---
 
-Feel free to choose the method that best fits your constraints:
-
-* Use **sorting** for simplicity when performance is not critical.
-* Use a **hash map** or **fixed array** for O(n) performance with trade-offs in readability and character set flexibility.
-
-
-UPDATE : 4th method is the best one.
----
-
 ## 4. Hash Map (Single Dictionary)
 
 **Idea:** Build a frequency map of characters from `s`, then decrement counts while scanning `t`. If at any point a character is missing or its count drops below zero, `t` is not an anagram. Otherwise, it is.
@@ -156,4 +147,28 @@ class Solution(object):
 
 ---
 
-This approach commonly outperforms many submissions on platforms like LeetCode, beating around 80 % in both runtime and memory usage.
+## 5. Set and Count (Current Implementation)
+
+**Idea:** Iterate through unique characters of `s` (using a set) and check if their count in `s` matches their count in `t`.
+
+```python
+class Solution(object):
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t): #if the lengths are different, return False
+            return False
+
+        for char in set(s):
+            if s.count(char)!= t.count(char):
+                return False
+        return True
+```
+
+**Time Complexity:** O(K * N)
+- `K` is the number of unique characters.
+- `N` is the string length.
+- `count()` is O(N), and we call it `K` times.
+- For English alphabet, K <= 26, so it's O(26 * N) = O(N).
+- Worst case (all unique characters): O(N^2).
+
+**Space Complexity:** O(K)
+- To store the set of unique characters.
